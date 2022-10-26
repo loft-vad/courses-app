@@ -1,27 +1,18 @@
-<div [ngClass]="{
-  'modal-shadow': true,
-  'modal-active': isModalShown
-}">
+<div *ngIf="isModalShown" class="modal-shadow">
   <div [class]="'modal-wrapper'">
-    <div>
-      {{ title }}
+    <div class="modal-header">
+      <h4>{{ title }}</h4>
       <span>
         <i class="fa-solid fa-xmark"></i>
         <fa-icon [icon]="faClose"></fa-icon>
       </span>
     </div>
-    <div>
+    <div class="modal-content">
       {{ message }}
     </div>
     <footer>
-      <div [ngClass]="'modal-footer-actions'">
-        <button>
-          {{ okButtonText }}
-        </button>
-        <button>
-          {{ cancelButtonText }}
-        </button>
-      </div>
+      <app-button [buttonText]="okButtonText"></app-button>
+      <app-button [buttonText]="cancelButtonText"></app-button>
     </footer>
   </div>
 </div>

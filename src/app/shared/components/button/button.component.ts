@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IconPrefix, IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-button',
@@ -7,9 +8,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
+  constructor() {
+  }
 
   @Input() buttonText = "Open Modal";
-  @Input() iconName = ""; //<i class="fa-duotone fa-window"></i>
+
+  @Input() iconPrefix: IconPrefix = "far";
+  @Input() iconName: IconName = "circle";
 
   ngOnInit(): void {
   }

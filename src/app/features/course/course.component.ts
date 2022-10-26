@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICourse } from 'src/app/shared/models/course';
 
 @Component({
   selector: 'app-course',
@@ -7,7 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
 
-  constructor() { }
+  course: ICourse
+
+  constructor() {
+    this.course =
+      {
+        title: "Course",
+        description: "Desc",
+        creationDate: new Date(),
+        duration: 123,
+        authors: [
+          "John", "Rohn"
+        ]
+      }
+    }
+
 
   ngOnInit(): void {
   }

@@ -1,21 +1,15 @@
-<app-courses></app-courses>
+<app-header>
+  Harry Potter
+  <app-button [buttonText]="'Logout'" [iconName]="'circle'"></app-button>
+</app-header>
 
-<div class="content" role="main">
+<div class="content-wrapper">
 
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
-    <span>{{ title }} app is running!</span>
-  </div>
+  <app-courses></app-courses>
 
-
-  <input type="hidden" #selection>
-
-  <button class="card card-small" (click)="selection.value = 'build'" tabindex="0">
-    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-    </svg>
-    <span>Build for Production</span>
-  </button>
+  <app-info [title]="'Your List is Empty'" [text]="'Please use \'Add New Course\' button to add your first course'">
+    <app-button [buttonText]="'Add New Course'" [iconName]="'circle'"></app-button>
+  </app-info>
 
 </div>
 
