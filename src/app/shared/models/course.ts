@@ -1,7 +1,7 @@
 export interface ICourse {
   title: string
   description: string
-  creationDate: Date
+  creationDate: string
   duration: number
   authors: string[]
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ICourse } from 'src/app/shared/models/course';
 
 @Component({
@@ -8,23 +8,25 @@ import { ICourse } from 'src/app/shared/models/course';
 })
 export class CourseComponent implements OnInit {
 
-  course: ICourse
+  authors: string | undefined;
 
   constructor() {
     this.course =
       {
         title: "Course",
         description: "Desc",
-        creationDate: new Date(),
+        creationDate: "13/11/2020",
         duration: 123,
         authors: [
           "John", "Rohn"
         ]
       }
-    }
-
+  }
+  @Input() course: ICourse
 
   ngOnInit(): void {
+
+    this.authors = this.course!.authors.join(', ');
   }
 
 }

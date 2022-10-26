@@ -11,12 +11,13 @@ export class ButtonComponent implements OnInit {
   constructor() {
   }
 
-  @Input() buttonText = "Open Modal";
+  @Input() buttonText = "";
 
   @Input() iconPrefix: IconPrefix = "far";
-  @Input() iconName: IconName = "circle";
+  @Input() iconName!: IconName;
 
   ngOnInit(): void {
+
   }
 
   onClick(event: Event) {
