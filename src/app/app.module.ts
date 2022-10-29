@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { LoginModule } from './features/login/login.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
     CoursesModule,
     SharedModule,
     FontAwesomeModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
