@@ -1,3 +1,5 @@
 <app-course *ngFor="let course of mockedCourseList" [course]="course"></app-course>
 
-<app-modal [message]="'Message Text'"></app-modal>
+<app-modal [title]="'Modal Title'" [message]="'Message Text'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"
+  *ngIf="showModal" (showCourseClick)="showModalChange($event)">
+</app-modal>

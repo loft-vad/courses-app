@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ICourse } from 'src/app/shared/models/course';
 
 @Component({
@@ -24,9 +24,16 @@ export class CourseComponent implements OnInit {
   }
   @Input() course: ICourse
 
+  @Output() showCourseClick = new EventEmitter();
+
   ngOnInit(): void {
 
     this.authors = this.course!.authors.join(', ');
+  }
+
+  openModal(event: Event) {
+    console.log("click event: ", event)
+    this.showCourseClick.emit(event);
   }
 
 }

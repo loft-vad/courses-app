@@ -38,4 +38,10 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showModal = false;
+
+  showModalChange(event: Event) {
+    this.showModal = true;
+  }
+
 }

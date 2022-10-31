@@ -16,11 +16,13 @@ export class ButtonComponent implements OnInit {
   @Input() iconPrefix: IconPrefix = "far";
   @Input() iconName!: IconName;
 
+  @Output() buttonClick = new EventEmitter();
+
   ngOnInit(): void {
 
   }
 
   onClick(event: Event) {
+    this.buttonClick.emit(event);
   }
-
 }

@@ -22,7 +22,20 @@ export class ModalComponent implements OnInit {
   @Input() okButtonText: string = "Ok";
   @Input() cancelButtonText: string = "Cancel";
 
-  @Output() isModalShown = false;
+  @Input() showModal: boolean = false;
+
+  @Output() showModalChange = new EventEmitter<boolean>();
+
+  ok() {
+    console.log('OK');
+    this.showModal = !this.showModal;
+    this.showModalChange.emit(this.showModal);
+  }
+
+  closeModal() {
+    this.showModal = !this.showModal;
+    this.showModalChange.emit(this.showModal);
+  }
 
   //Add simple mechanism of hiding/showing modal with help of the <app-button> component and *ngIf directive.
 }
