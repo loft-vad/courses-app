@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { ICourse } from 'src/app/shared/models/course';
 
 @Component({
   selector: 'app-courses',
@@ -7,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor() { }
+  course$!: Observable<ICourse>;
+
+  constructor(private route: ActivatedRoute) { }
 
   mockedCourseList = [
     {
@@ -36,6 +42,8 @@ export class CoursesComponent implements OnInit {
 
 
   ngOnInit(): void {
+    const courseId = this.route.snapshot.paramMap.get('id');
+    // this.course$ = this.service.getCourse(courseId);
   }
 
 }
