@@ -1,0 +1,17 @@
+<div *ngIf="isModalShown" class="modal-shadow">
+  <div [class]="'modal-wrapper'">
+    <div class="modal-header">
+      <h4>{{ title }}</h4>
+      <span>
+        <fa-icon [icon]="faClose"></fa-icon>
+      </span>
+    </div>
+    <div class="modal-content">
+      {{ message }}
+    </div>
+    <footer>
+      <app-button [buttonText]="okButtonText"></app-button>
+      <app-button [buttonText]="cancelButtonText"></app-button>
+    </footer>
+  </div>
+</div>
