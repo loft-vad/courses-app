@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './components/button/button.component';
-import { HeaderComponent } from './components/header/header.component';
-import { InfoComponent } from './components/info/info.component';
-import { ModalComponent } from './components/modal/modal.component';
+
+import { ButtonComponent, HeaderComponent, InfoComponent, ModalComponent } from './components/index';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const COMPONENTS = [ButtonComponent, HeaderComponent, InfoComponent, ModalComponent];
+// or using spread
 
 @NgModule({
   declarations: COMPONENTS,

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { faClose, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-modal',
@@ -8,7 +8,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 })
 export class ModalComponent implements OnInit {
 
-  faClose = faClose;
+  faClose: IconDefinition = faClose;
 
   constructor() {
 
@@ -22,19 +22,10 @@ export class ModalComponent implements OnInit {
   @Input() okButtonText: string = "Ok";
   @Input() cancelButtonText: string = "Cancel";
 
-  @Input() showModal: boolean = false;
+  @Output() modalResultEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  @Output() showModalChange = new EventEmitter<boolean>();
-
-  ok() {
-    console.log('OK');
-    this.showModal = !this.showModal;
-    this.showModalChange.emit(this.showModal);
-  }
-
-  closeModal() {
-    this.showModal = !this.showModal;
-    this.showModalChange.emit(this.showModal);
+  closeModal(result: boolean) {
+    this.modalResultEmitter.next(result);
   }
 
   //Add simple mechanism of hiding/showing modal with help of the <app-button> component and *ngIf directive.

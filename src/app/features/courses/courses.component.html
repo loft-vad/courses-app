@@ -1,5 +1,22 @@
-<app-course *ngFor="let course of mockedCourseList" [course]="course"></app-course>
+<app-header>
+  Harry Potter
+  <app-button [buttonText]="'Logout'"></app-button>
+</app-header>
 
-<app-modal [title]="'Modal Title'" [message]="'Message Text'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"
-  *ngIf="showModal" (showCourseClick)="showModalChange($event)">
-</app-modal>
+<div class="content-wrapper">
+  <div class="courses-wrapper">
+    <app-button (click)="showModal()" [buttonText]="'Open modal'"></app-button>
+    <app-courses-list [courses]="courses" [areEditable]="areCoursesEditable" (showCourseEmitter)="showCourse()"
+      (editCourseEmitter)="editCourse()" (deleteCourseEmitter)="deleteCourse()">
+    </app-courses-list>
+
+    <app-info [title]="'Your List is Empty'" [text]="'Please use \'Add New Course\' button to add your first course'">
+      <app-button [buttonText]="'Add New Course'"></app-button>
+    </app-info>
+
+  </div>
+
+  <app-modal *ngIf="isModalShown" [title]="'Modal Title'" [message]="'Message Text'" [okButtonText]="'Ok'"
+    [cancelButtonText]="'Cancel'" (modalResultEmitter)="modalClosed($event)"></app-modal>
+
+</div>

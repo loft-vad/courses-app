@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-courses',
@@ -9,7 +9,7 @@ export class CoursesComponent implements OnInit {
 
   constructor() { }
 
-  mockedCourseList = [
+  courses = [
     {
       id: "de5aaa59-90f5-4dbc-b8a9-aaf205c551ba",
       title: "JavaScript",
@@ -34,6 +34,30 @@ export class CoursesComponent implements OnInit {
     },
   ];
 
+  areCoursesEditable: boolean = false;
+  isModalShown: boolean = false;
+
+  showModal() {
+    console.log("show modal");
+    this.isModalShown = true;
+  }
+
+  modalClosed(wasClosedOrCanceled: boolean) {
+    console.log('modal closed with result: ', wasClosedOrCanceled);
+    this.isModalShown = false;
+  }
+
+  showCourse() {
+    console.log("show course");
+  }
+
+  editCourse() {
+    console.log("edit course");
+  }
+
+  deleteCourse() {
+    console.log("delete course");
+  }
 
   ngOnInit(): void {
   }
