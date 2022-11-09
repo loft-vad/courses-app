@@ -6,15 +6,22 @@
   height: 100%;
 
   .login-form {
+    h3 {
+      text-align: center;
+      padding-bottom: 36px;
+    }
+  }
+
+  .login-form-content {
     width: 283px;
-    padding: 46px 150px;
+    padding: 75px 150px 46px;
     background: #ffffff;
     border: 1px solid #cfcfcf;
     border-radius: 4px;
     display: flex;
     flex-flow: column nowrap;
     text-align: center;
-    gap: 34px;
+    gap: 14px;
   }
 
   .login-form-submit {
@@ -35,6 +42,7 @@
   display: flex;
   flex-flow: column nowrap;
   text-align: left;
+  position: relative;
 
   label {
     font-weight: 700;
@@ -51,9 +59,26 @@
     background: #ffffff;
     border: 1px solid #cfcfcf;
     border-radius: 4px;
+    margin-bottom: 20px;
 
     &::placeholder {
       color: #cfcfcf;
+    }
+  }
+
+  .error-message {
+    display: none;
+    position: absolute;
+    bottom: 0;
+  }
+
+  &.invalid {
+    input {
+      border-color: #ff0000;
+    }
+    .error-message {
+      display: block;
+      color: #ff0000;
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ICourse } from 'src/app/shared/models/course';
+import { faClose, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-course',
@@ -8,25 +9,12 @@ import { ICourse } from 'src/app/shared/models/course';
 })
 export class CourseComponent implements OnInit {
 
-  authors: string | undefined;
+  faClose: IconDefinition = faClose;
 
   constructor() {
-    this.course =
-      {
-        title: "Course",
-        description: "Desc",
-        creationDate: "13/11/2020",
-        duration: 123,
-        authors: [
-          "John", "Rohn"
-        ]
-      }
   }
-  @Input() course: ICourse
 
   ngOnInit(): void {
-
-    this.authors = this.course!.authors.join(', ');
   }
 
 }

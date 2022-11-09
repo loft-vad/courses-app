@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButtonComponent, HeaderComponent, InfoComponent, ModalComponent } from './components/index';
+import { ButtonComponent, HeaderComponent, InfoComponent, ModalComponent, SearchComponent } from './components/index';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-const COMPONENTS = [ButtonComponent, HeaderComponent, InfoComponent, ModalComponent];
+const COMPONENTS = [ButtonComponent, HeaderComponent, InfoComponent, ModalComponent, SearchComponent];
 // or using spread
 
 @NgModule({

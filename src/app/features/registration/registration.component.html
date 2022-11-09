@@ -1,1 +1,28 @@
-<p>registration works!</p>
+<div class="login-form-wrapper">
+  <div class="login-form">
+    <h3>Registration</h3>
+    <div class="login-form-content">
+      <div class="form-field">
+        <label>Name</label>
+        <input type="userName" placeholder="Input text" />
+        <div class="error-message">Name is required.</div>
+      </div>
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" placeholder="Input text" />
+        <div class="error-message">Email is required.</div>
+      </div>
+      <div class="form-field invalid">
+        <label>Password</label>
+        <input type="password" placeholder="Input text" />
+        <div class="error-message">Password is required.</div>
+      </div>
+      <div class="login-form-submit">
+        <app-button buttonText="Login"></app-button>
+      </div>
+      <div class="login-form-text">
+        If you have an account you may <strong>Login</strong>
+      </div>
+    </div>
+  </div>
+</div>
