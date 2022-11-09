@@ -1,0 +1,47 @@
+.form-field {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: left;
+  position: relative;
+
+  label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333e48;
+  }
+
+  input,
+  textarea {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 13px 16px;
+    border: 0;
+    background: #ffffff;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    margin-bottom: 20px;
+
+    &::placeholder {
+      color: #cfcfcf;
+    }
+  }
+
+  .error-message {
+    display: none;
+    position: absolute;
+    bottom: 0;
+  }
+
+  input,
+  textarea {
+    &.ng-invalid:not(.ng-untouched) {
+      border-color: #ff0000;
+
+      & + .error-message {
+        display: block;
+        color: #ff0000;
+      }
+    }
+  }
+}

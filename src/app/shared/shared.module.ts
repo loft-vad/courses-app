@@ -5,7 +5,11 @@ import { ButtonComponent, HeaderComponent, InfoComponent, ModalComponent, Search
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-const COMPONENTS = [ButtonComponent, HeaderComponent, InfoComponent, ModalComponent, SearchComponent];
+import { EmailValidatorDirective } from './directives/email-validator.directive';
+import { DurationPipe } from './pipes/duration.pipe';
+import { FormatDatePipe } from './pipes/formatDate.pipe';
+
+const COMPONENTS = [ButtonComponent, HeaderComponent, InfoComponent, ModalComponent, SearchComponent, EmailValidatorDirective, DurationPipe, FormatDatePipe];
 // or using spread
 
 @NgModule({

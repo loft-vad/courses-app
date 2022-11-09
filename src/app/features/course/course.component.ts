@@ -5,7 +5,7 @@ import { faClose, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.scss']
+  styleUrls: ['./course.component.scss', '../forms.scss']
 })
 export class CourseComponent implements OnInit {
 

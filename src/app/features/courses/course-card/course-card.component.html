@@ -7,8 +7,8 @@
   </div>
   <div class="card-data">
     <strong>Authors:</strong> {{ autrhorsToShow }}<br>
-    <strong>Duration:</strong> {{ durationHHMMString }}<br>
-    <strong>Created:</strong> {{ creationDateString }}
+    <strong>Duration:</strong> {{ duration | duration }}<br>
+    <strong>Created:</strong> {{ creationDate | dateFormatDDMMYYYY }}
   </div>
   <div class="card-actions">
     <ng-content></ng-content>

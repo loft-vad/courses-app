@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -8,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 
   constructor() { }
+
+  @Input() searchPlaceholder: string = "";
+
+  @Output() searchButtonEmitter: EventEmitter<string> = new EventEmitter();
+
+  searchSubmit(value: string) {
+    this.searchButtonEmitter.next(value);
+  }
 
   ngOnInit(): void {
   }

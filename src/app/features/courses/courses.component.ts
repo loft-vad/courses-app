@@ -47,6 +47,10 @@ export class CoursesComponent implements OnInit {
     this.isModalShown = false;
   }
 
+  searchSubmit(searchText: string) {
+    console.log("searchSubmit: ", searchText);
+  }
+
   showCourse() {
     console.log("show course");
   }

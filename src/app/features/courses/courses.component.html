@@ -7,6 +7,8 @@
   <div class="courses-wrapper">
     <app-button (click)="showModal()" [buttonText]="'Open modal'"></app-button>
 
+    <app-search [searchPlaceholder]="'Input text'" (searchButtonEmitter)="searchSubmit($event)"></app-search>
+
     <app-courses-list *ngIf="courses" [courses]="courses" [areEditable]="areCoursesEditable"
       (showCourseEmitter)="showCourse()" (editCourseEmitter)="editCourse()" (deleteCourseEmitter)="deleteCourse()">
       <!-- *ngIf="courses; else addNewCourse" -->

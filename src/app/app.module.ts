@@ -11,10 +11,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { LoginModule } from './features/login/login.module';
 import { RegistrationModule } from './features/registration/registration.module';
 import { CourseModule } from './features/course/course.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,8 @@ import { CourseModule } from './features/course/course.module';
     FontAwesomeModule,
     LoginModule,
     RegistrationModule,
-    CourseModule
+    CourseModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
