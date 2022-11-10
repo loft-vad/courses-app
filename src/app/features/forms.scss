@@ -38,7 +38,7 @@
     &.ng-invalid:not(.ng-untouched) {
       border-color: #ff0000;
 
-      & + .error-message {
+      & ~ .error-message {
         display: block;
         color: #ff0000;
       }

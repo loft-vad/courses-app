@@ -3,53 +3,66 @@
     <h3>Course edit/create page</h3>
     <div class="course-form-content">
       <h5>Main info</h5>
-      <div class="form-field">
-        <label>Title</label>
-        <input type="text" name="title" placeholder="Input text" />
-        <div class="error-message">Title is required.</div>
-      </div>
-      <div class="form-field invalid">
-        <label>Description</label>
-        <textarea type="text" name="description" placeholder="Input text"></textarea>
-        <div class="error-message">Description is required.</div>
-      </div>
-      <div class="hr"></div>
-      <h5>Authors</h5>
-      <div class="add-panel">
-        <div class="form-field invalid">
-          <label>Author Name</label>
-          <input type="text" name="authorName" placeholder="Input text" />
-          <div class="error-message">Description is required.</div>
-        </div>
-        <app-button [buttonText]="'Create Author'"></app-button>
-      </div>
-      <div class="form-field invalid">
-        <label>Authors List</label>
-        <div class="tag">
-          <div>
-            Author One
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-field">
+          <label for="courseTitle">Title</label>
+          <input type="text" name="courseTitle" id="courseTitle" placeholder="Input text"
+            formControlName="courseTitle" />
+          <div class="error-message">Title is required.</div>
+          <div *ngIf="submitted && f['courseTitle'].errors">
+            <div *ngIf="f['courseTitle'].errors['required']">Title is required.</div>
+            <div *ngIf="f['courseTitle'].errors['minlength']">Password must be at least 6 characters</div>
           </div>
-          <fa-icon [icon]="faClose"></fa-icon>
         </div>
-      </div>
-      <div class="hr"></div>
-      <h5>Duration</h5>
 
-      <div class="add-panel">
-        <div class="form-field invalid">
-          <label>Duration</label>
-          <input type="text" name="duration" placeholder="Input text" />
+        <div class="form-field">
+          <label>Description</label>
+          <textarea type="text" name="description" placeholder="Input text"
+            formControlName="courseDescription"></textarea>
           <div class="error-message">Description is required.</div>
         </div>
-        <div>
-          <strong>00:00</strong> hours
-        </div>
-      </div>
 
-      <div class="course-form-actions">
-        <app-button [buttonText]="'Cancel'"></app-button>
-        <app-button [buttonText]="'Create Course'"></app-button>
-      </div>
+        <div class="hr"></div>
+        <h5>Authors</h5>
+        <div class="add-panel">
+
+          <div class="form-field">
+            <label>Author Name</label>
+            <input type="text" name="authorName" placeholder="Input text" formControlName="courseAuthors" />
+            <div class="error-message">Description is required.</div>
+          </div>
+          <app-button [buttonText]="'Create Author'"></app-button>
+
+        </div>
+        <div class="form-field">
+          <label>Authors List</label>
+          <div class="tag">
+            <div>
+              Author One
+            </div>
+            <fa-icon [icon]="faClose"></fa-icon>
+          </div>
+        </div>
+        <div class="hr"></div>
+        <h5>Duration</h5>
+
+        <div class="add-panel">
+          <div class="form-field">
+            <label>Duration</label>
+            <input type="text" name="duration" placeholder="Input text" formControlName="courseDuration" />
+            <div class="error-message">Description is required.</div>
+          </div>
+          <div>
+            <strong>00:00</strong> hours
+          </div>
+        </div>
+
+        <div class="course-form-actions">
+          <app-button [buttonText]="'Cancel'"></app-button>
+          <app-button [buttonText]="'Create Course'"></app-button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
