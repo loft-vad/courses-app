@@ -6,7 +6,7 @@
     {{ description }}
   </div>
   <div class="card-data">
-    <strong>Authors:</strong> {{ autrhorsToShow }}<br>
+    <strong>Authors:</strong> {{ authors | arrToString }}<br>
     <strong>Duration:</strong> {{ duration | duration }}<br>
     <strong>Created:</strong> {{ creationDate | dateFormatDDMMYYYY }}
   </div>

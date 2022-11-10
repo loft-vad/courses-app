@@ -13,10 +13,7 @@ export class CourseCardComponent implements OnInit {
   description: string = '';
   creationDate: Date = new Date();
   duration: number = 0;
-
-  autrhorsToShow: string = '';
-  creationDateString: string = '';
-  durationHHMMString: string = '';
+  authors: string[] = [];
 
   constructor() {
   }
@@ -30,8 +27,7 @@ export class CourseCardComponent implements OnInit {
     this.description = this.course.description;
     this.creationDate = new Date(this.course.creationDate);
     this.duration = this.course.duration;
-
-    this.autrhorsToShow = this.course!.authors.join(', ');
+    this.authors = this.course.authors;
   }
 
 }

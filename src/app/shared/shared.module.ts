@@ -8,8 +8,19 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailValidatorDirective } from './directives/email-validator.directive';
 import { DurationPipe } from './pipes/duration.pipe';
 import { FormatDatePipe } from './pipes/formatDate.pipe';
+import { ArrToStringPipe } from './pipes/arrayToString.pipe';
 
-const COMPONENTS = [ButtonComponent, HeaderComponent, InfoComponent, ModalComponent, SearchComponent, EmailValidatorDirective, DurationPipe, FormatDatePipe];
+const COMPONENTS = [
+  ButtonComponent,
+  HeaderComponent,
+  InfoComponent,
+  ModalComponent,
+  SearchComponent,
+  EmailValidatorDirective,
+  DurationPipe,
+  FormatDatePipe,
+  ArrToStringPipe
+];
 // or using spread
 
 @NgModule({
