@@ -8,8 +8,10 @@
 
           <input type="email" name="email" id="email" placeholder="Input text" ngModel emailValidator required
             [(ngModel)]="model.email" #email="ngModel" />
-          <div class="error-message">Email is required. <span *ngIf="email.errors?.['emailValidator']">Email is
-              invalid.</span></div>
+          <div class="error-message">
+            <span *ngIf="email.errors?.['required']">Email is required. </span>
+            <span *ngIf="email.errors?.['emailValidator']">Email is invalid.</span>
+          </div>
 
         </div>
         <div class="form-field">

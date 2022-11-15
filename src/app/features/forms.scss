@@ -35,7 +35,7 @@
 
   input,
   textarea {
-    &.ng-invalid:not(.ng-untouched) {
+    &.ng-invalid.ng-touched {
       border-color: #ff0000;
 
       & ~ .error-message {

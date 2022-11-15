@@ -26,10 +26,26 @@ export class CourseComponent implements OnInit {
       courseDuration: ['', [Validators.required, Validators.minLength(0)]],
       courseAuthors: ['', Validators.required],
 
-      newAuthor: this.fb.group({
-        authorName: ['', Validators.pattern('[^A-Za-z0-9]+')]
-      })
+
+      authors: this.fb.array([]),
+    })
+  }
+
+  newAuthor = this.fb.group({
+    authorName: new FormControl('', [Validators.pattern('[^A-Za-z0-9]+')]),
   })
+
+  get authors() {
+    return this.courseForm.controls["authors"] as FormArray;
+  }
+
+  addAuthors() {
+    this.authors.push(this.newAuthor);
+    console.log('authors: ', this.authors);
+  }
+
+  removeAuthor(authorIndex: number) {
+    this.authors.removeAt(authorIndex);
   }
 
   get f() { return this.courseForm.controls; }
@@ -46,13 +62,6 @@ export class CourseComponent implements OnInit {
 
     console.log('Form data:' + JSON.stringify(this.courseForm.value))
   }
-
-  // courseTitle = new FormControl('Title R');
-  // courseDescription = new FormControl('');
-  // courseCreationDate = new FormControl('');
-  // courseDuration = new FormControl('');
-  // courseAuthors = new FormControl('');
-
 
   ngOnInit(): void {
   }

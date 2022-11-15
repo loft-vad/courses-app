@@ -9,10 +9,9 @@
           <label for="courseTitle">Title</label>
           <input type="text" name="courseTitle" id="courseTitle" placeholder="Input text"
             formControlName="courseTitle" />
-          <div class="error-message">Title is required.</div>
-          <div *ngIf="submitted && f['courseTitle'].errors">
+          <div class="error-message"
+            *ngIf="(f['courseTitle'].dirty || f['courseTitle'].touched) && f['courseTitle'].errors">
             <div *ngIf="f['courseTitle'].errors['required']">Title is required.</div>
-            <div *ngIf="f['courseTitle'].errors['minlength']">Password must be at least 6 characters</div>
           </div>
         </div>
 
@@ -20,7 +19,10 @@
           <label>Description</label>
           <textarea type="text" name="description" placeholder="Input text"
             formControlName="courseDescription"></textarea>
-          <div class="error-message">Description is required.</div>
+          <div class="error-message"
+            *ngIf="(f['courseDescription'].dirty || f['courseDescription'].touched) && f['courseDescription'].errors">
+            <div *ngIf="f['courseDescription'].errors['required']">Description is required.</div>
+          </div>
         </div>
 
         <div class="hr"></div>
@@ -29,21 +31,29 @@
 
           <div class="form-field">
             <label>Author Name</label>
-            <input type="text" name="authorName" placeholder="Input text" formControlName="courseAuthors" />
+            <input type="text" name="name" placeholder="Input text" formControlName="courseAuthors" />
             <div class="error-message">Description is required.</div>
           </div>
-          <app-button [buttonText]="'Create Author'"></app-button>
+          <app-button [buttonText]="'Create Author'" (click)="addAuthors()"></app-button>
 
         </div>
         <div class="form-field">
           <label>Authors List</label>
-          <div class="tag">
-            <div>
-              Author One
+
+          <ng-container formArrayName="authors">
+            <div *ngFor="let newAuthor of authors.controls; let i=index" class="tag">
+              <div [formGroupName]="i">
+                <div>
+                  Author One
+                </div>
+                <input id="authorName" formControlName="authorName">
+                <fa-icon [icon]="faClose" (click)="removeAuthor(i)"></fa-icon>
+              </div>
             </div>
-            <fa-icon [icon]="faClose"></fa-icon>
-          </div>
+          </ng-container>
+
         </div>
+
         <div class="hr"></div>
         <h5>Duration</h5>
 
