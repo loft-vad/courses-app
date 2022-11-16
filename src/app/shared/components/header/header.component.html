@@ -1,6 +1,16 @@
 <header>
   <img src="{{ logoPath }}" alt="{{ logoAlt }}">
   <div>
+    <nav>
+      <ul>
+        <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        <li><a routerLink="/registration" routerLinkActive="active">Registration</a></li>
+        <li><a routerLink="/courses" routerLinkActive="active">Courses</a></li>
+        <li><a routerLink="/courses/add" routerLinkActive="active">Add Course</a></li>
+        <li><a routerLink="/courses/1" routerLinkActive="active">Show Course 1</a></li>
+        <li><a routerLink="/courses/edit/1" routerLinkActive="active">Edit Course 1</a></li>
+      </ul>
+    </nav>
     <ng-content></ng-content>
   </div>
 </header>

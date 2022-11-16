@@ -24,3 +24,15 @@ header {
     gap: 26px;
   }
 }
+
+nav ul {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  gap: 15px;
+
+  li {
+    list-style: none;
+  }
+}

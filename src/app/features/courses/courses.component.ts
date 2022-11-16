@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { ICourse } from 'src/app/shared/models/course';
@@ -13,7 +12,7 @@ export class CoursesComponent implements OnInit {
 
   course$!: Observable<ICourse>;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor() { }
 
   courses = [
     {
@@ -70,8 +69,6 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const courseId = this.route.snapshot.paramMap.get('id');
-    // this.course$ = this.service.getCourse(courseId);
   }
 
 }

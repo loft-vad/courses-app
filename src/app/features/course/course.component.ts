@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faClose, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course',
@@ -14,7 +15,7 @@ export class CourseComponent implements OnInit {
   courseForm!: FormGroup;
   submitted = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) {
     this.buildForm();
   }
 
@@ -64,6 +65,10 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const courseId = this.route.snapshot.paramMap.get('id');
+    const isEditable = this.route.snapshot.paramMap.get('id');
+    console.log('course component courseId: ', courseId);
+    // this.course$ = this.service.getCourse(courseId);
   }
 
 }

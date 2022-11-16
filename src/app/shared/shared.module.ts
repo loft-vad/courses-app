@@ -9,6 +9,7 @@ import { EmailValidatorDirective } from './directives/email-validator.directive'
 import { DurationPipe } from './pipes/duration.pipe';
 import { FormatDatePipe } from './pipes/formatDate.pipe';
 import { ArrToStringPipe } from './pipes/arrayToString.pipe';
+import { AppRoutingModule } from '../app-routing.module';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -27,7 +28,8 @@ const COMPONENTS = [
   declarations: COMPONENTS,
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AppRoutingModule
   ],
   exports: COMPONENTS
 })
