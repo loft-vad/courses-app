@@ -1,3 +1,17 @@
 :host {
   display: block;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.content-wrapper {
+  flex: 1 0 auto;
+  position: relative;
+}
+
+.courses-wrapper {
+  max-width: 1122px;
+  padding: 71px 0;
+  margin: 0 auto;
 }

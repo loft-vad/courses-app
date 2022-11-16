@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  padding-bottom: 40px;
+
+  & > div {
+    &:first-child {
+      flex: 1 0 auto;
+    }
+    &:last-child {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+input {
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 13px 16px;
+  border: 0;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #cfcfcf;
+  }
+}

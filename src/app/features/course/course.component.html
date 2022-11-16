@@ -1,18 +1,78 @@
-<div class="card-wrapper">
-  <div class="card-title">
-    {{ course.title }}
-  </div>
-  <div class="card-description">
-    {{ course.description }}
-  </div>
-  <div class="card-data">
-    <strong>Authors:</strong> {{ authors }}<br>
-    <strong>Duration:</strong> {{ course.duration }}<br>
-    <strong>Created:</strong> {{ course.creationDate }}
-  </div>
-  <div class="card-actions">
-    <app-button [buttonText]="'Show course'"></app-button>
-    <app-button [iconName]="'trash-can'"></app-button>
-    <app-button [iconName]="'pencil'" [iconPrefix]="'fas'"></app-button>
+<div class="course-form-wrapper">
+  <div class="course-form">
+    <h3>Course edit/create page</h3>
+    <div class="course-form-content">
+      <h5>Main info</h5>
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-field">
+          <label for="courseTitle">Title</label>
+          <input type="text" name="courseTitle" id="courseTitle" placeholder="Input text"
+            formControlName="courseTitle" />
+          <div class="error-message"
+            *ngIf="(f['courseTitle'].dirty || f['courseTitle'].touched) && f['courseTitle'].errors">
+            <div *ngIf="f['courseTitle'].errors['required']">Title is required.</div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Description</label>
+          <textarea type="text" name="description" placeholder="Input text"
+            formControlName="courseDescription"></textarea>
+          <div class="error-message"
+            *ngIf="(f['courseDescription'].dirty || f['courseDescription'].touched) && f['courseDescription'].errors">
+            <div *ngIf="f['courseDescription'].errors['required']">Description is required.</div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+        <h5>Authors</h5>
+        <div class="add-panel">
+
+          <div class="form-field">
+            <label>Author Name</label>
+            <input type="text" name="name" placeholder="Input text" formControlName="courseAuthors" />
+            <div class="error-message">Description is required.</div>
+          </div>
+          <app-button [buttonText]="'Create Author'" (click)="addAuthors()"></app-button>
+
+        </div>
+        <div class="form-field">
+          <label>Authors List</label>
+
+          <ng-container formArrayName="authors">
+            <div *ngFor="let newAuthor of authors.controls; let i=index" class="tag">
+              <div [formGroupName]="i">
+                <div>
+                  Author One
+                </div>
+                <input id="authorName" formControlName="authorName">
+                <fa-icon [icon]="faClose" (click)="removeAuthor(i)"></fa-icon>
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+
+        <div class="hr"></div>
+        <h5>Duration</h5>
+
+        <div class="add-panel">
+          <div class="form-field">
+            <label>Duration</label>
+            <input type="text" name="duration" placeholder="Input text" formControlName="courseDuration" />
+            <div class="error-message">Description is required.</div>
+          </div>
+          <div>
+            <strong>00:00</strong> hours
+          </div>
+        </div>
+
+        <div class="course-form-actions">
+          <app-button [buttonText]="'Cancel'"></app-button>
+          <app-button [buttonText]="'Create Course'"></app-button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

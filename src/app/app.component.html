@@ -1,23 +1,10 @@
-<app-header>
-  <nav>
-    <ul>
-      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-      <li><a routerLink="/registration" routerLinkActive="active">Registration</a></li>
-      <li><a routerLink="/courses" routerLinkActive="active">Courses</a></li>
-    </ul>
-  </nav>
-  Harry Potter
-  <app-button [buttonText]="'Logout'"></app-button>
-</app-header>
+<app-course></app-course>
+<app-login></app-login>
+<app-registration></app-registration>
 
-<div class="content-wrapper">
-  <router-outlet></router-outlet>
+<app-courses></app-courses>
 
-  <app-info [title]="'Your List is Empty'" [text]="'Please use \'Add New Course\' button to add your first course'">
-    <app-button [buttonText]="'Add New Course'"></app-button>
-  </app-info>
-
-</div>
+<router-outlet></router-outlet>
 
 <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
   <title>Gray Clouds Background</title>

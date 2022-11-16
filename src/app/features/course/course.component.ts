@@ -1,32 +1,69 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ICourse } from 'src/app/shared/models/course';
+import { faClose, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { FormControl, FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.scss']
+  styleUrls: ['./course.component.scss', '../forms.scss']
 })
 export class CourseComponent implements OnInit {
 
-  authors: string | undefined;
+  faClose: IconDefinition = faClose;
 
-  constructor() {
-    this.course =
-      {
-        title: "Course",
-        description: "Desc",
-        creationDate: "13/11/2020",
-        duration: 123,
-        authors: [
-          "John", "Rohn"
-        ]
-      }
+  courseForm!: FormGroup;
+  submitted = false;
+
+  constructor(private fb: FormBuilder) {
+    this.buildForm();
   }
-  @Input() course: ICourse
+
+  buildForm(): void {
+    this.courseForm = this.fb.group({
+      courseTitle: ['gge', Validators.required],
+      courseDescription: ['', Validators.required],
+      courseCreationDate: [new Date(), Validators.required],
+      courseDuration: ['', [Validators.required, Validators.minLength(0)]],
+      courseAuthors: ['', Validators.required],
+
+
+      authors: this.fb.array([]),
+    })
+  }
+
+  newAuthor = this.fb.group({
+    authorName: new FormControl('', [Validators.pattern('[^A-Za-z0-9]+')]),
+  })
+
+  get authors() {
+    return this.courseForm.controls["authors"] as FormArray;
+  }
+
+  addAuthors() {
+    this.authors.push(this.newAuthor);
+    console.log('authors: ', this.authors);
+  }
+
+  removeAuthor(authorIndex: number) {
+    this.authors.removeAt(authorIndex);
+  }
+
+  get f() { return this.courseForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.courseForm.invalid) {
+      console.log("courseForm.invalid");
+      console.log(this.courseForm.controls);
+        return;
+    }
+
+    console.log('Form data:' + JSON.stringify(this.courseForm.value))
+  }
 
   ngOnInit(): void {
-
-    this.authors = this.course!.authors.join(', ');
   }
 
 }
