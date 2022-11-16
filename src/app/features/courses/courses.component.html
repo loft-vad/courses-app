@@ -9,18 +9,15 @@
 
     <app-search [searchPlaceholder]="'Input text'" (searchButtonEmitter)="searchSubmit($event)"></app-search>
 
-    <app-courses-list *ngIf="courses" [courses]="courses" [areEditable]="areCoursesEditable"
+    <app-courses-list *ngIf="courses; else noResults" [courses]="courses" [areEditable]="areCoursesEditable"
       (showCourseEmitter)="showCourse()" (editCourseEmitter)="editCourse()" (deleteCourseEmitter)="deleteCourse()">
-      <!-- *ngIf="courses; else addNewCourse" -->
     </app-courses-list>
-    <!--
-    <ng-template #addNewCourse>
+
+    <ng-template #noResults>
+      <app-info [title]="'Your List is Empty'" [text]="'Please use \'Add New Course\' button to add your first course'">
+        <app-button [buttonText]="'Add New Course'"></app-button>
+      </app-info>
     </ng-template>
-    -->
-    <app-info *ngIf="!courses" [title]="'Your List is Empty'"
-      [text]="'Please use \'Add New Course\' button to add your first course'">
-      <app-button [buttonText]="'Add New Course'"></app-button>
-    </app-info>
 
   </div>
 

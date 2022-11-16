@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CoursesService } from 'src/app/services/courses.service';
 
 import { ICourse } from 'src/app/shared/models/course';
 
@@ -11,36 +13,25 @@ import { ICourse } from 'src/app/shared/models/course';
 export class CoursesComponent implements OnInit {
 
   course$!: Observable<ICourse>;
-
-  constructor() { }
-
-  courses = [
-    {
-      id: "de5aaa59-90f5-4dbc-b8a9-aaf205c551ba",
-      title: "JavaScript",
-      description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                      has been the industry's standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a type specimen book. It has survived
-                      not only five centuries, but also the leap into electronic typesetting, remaining essentially u
-                      nchanged.`,
-      creationDate: "8/3/2021",
-      duration: 160,
-      authors: ["Vasiliy Dobkin", "Nicolas Kim"],
-    },
-    {
-      id: "b5630fdd-7bf7-4d39-b75a-2b5906fd0916",
-      title: "Angular",
-      description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                      has been the industry's standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a type specimen book.`,
-      creationDate: "10/11/2020",
-      duration: 210,
-      authors: ["Anna Sidorenko", "Valentina Larina"],
-    },
-  ];
+  title = ''
+  courses: ICourse[] = [];
 
   areCoursesEditable: boolean = false;
   isModalShown: boolean = false;
+
+  constructor(private coursesService: CoursesService) { }
+
+  ngOnInit(): void {
+    this.getCourses()
+  }
+
+  getCourses() {
+    this.coursesService.getAll()
+      .subscribe(courses => {
+        this.courses = courses
+      }),
+      (err: HttpErrorResponse) => console.log(`Got error: ${err}`);
+  }
 
   showModal() {
     console.log("show modal");
@@ -53,7 +44,12 @@ export class CoursesComponent implements OnInit {
   }
 
   searchSubmit(searchText: string) {
-    console.log("searchSubmit: ", searchText);
+    this.coursesService.getFilter(searchText)
+      .subscribe(courses => {
+        this.courses = courses
+        console.log('courses ', courses);
+      }),
+      (err: HttpErrorResponse) => console.log(`Got error: ${err}`);
   }
 
   showCourse() {
@@ -66,9 +62,6 @@ export class CoursesComponent implements OnInit {
 
   deleteCourse() {
     console.log("delete course");
-  }
-
-  ngOnInit(): void {
   }
 
 }

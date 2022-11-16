@@ -9,12 +9,14 @@ export class SearchComponent implements OnInit {
 
   constructor() { }
 
+  searchText: string = "";
+
   @Input() searchPlaceholder: string = "";
 
   @Output() searchButtonEmitter: EventEmitter<string> = new EventEmitter();
 
-  searchSubmit(value: string) {
-    this.searchButtonEmitter.next(value);
+  searchSubmit() {
+    this.searchButtonEmitter.next(this.searchText);
   }
 
   ngOnInit(): void {

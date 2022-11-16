@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { faClose, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
   selector: 'app-course',
@@ -15,16 +16,16 @@ export class CourseComponent implements OnInit {
   courseForm!: FormGroup;
   submitted = false;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private coursesService: CoursesService) {
     this.buildForm();
   }
 
   buildForm(): void {
     this.courseForm = this.fb.group({
-      courseTitle: ['gge', Validators.required],
-      courseDescription: ['', Validators.required],
+      title: ['gge', Validators.required],
+      description: ['', Validators.required],
       courseCreationDate: [new Date(), Validators.required],
-      courseDuration: ['', [Validators.required, Validators.minLength(0)]],
+      duration: ['', [Validators.required, Validators.min(0)]],
       courseAuthors: ['', Validators.required],
 
 
@@ -60,6 +61,11 @@ export class CourseComponent implements OnInit {
       console.log(this.courseForm.controls);
         return;
     }
+    let isEdit = false;
+    let course = this.courseForm.value;
+
+    if (isEdit) this.coursesService.editCourse(course);
+    if (!isEdit) this.coursesService.createCourse(course);
 
     console.log('Form data:' + JSON.stringify(this.courseForm.value))
   }

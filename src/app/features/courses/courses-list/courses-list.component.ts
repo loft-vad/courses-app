@@ -14,11 +14,6 @@ export class CoursesListComponent implements OnInit {
 
   @Input() areEditable: boolean = false;
 
-  /**
-   * Should have one or many @Output(s) for "course action(s)". So course list
-   * component should delegate any course related action to upper component.
-   */
-
   @Output() showCourseEmitter: EventEmitter<any> = new EventEmitter();
   @Output() editCourseEmitter: EventEmitter<any> = new EventEmitter();
   @Output() deleteCourseEmitter: EventEmitter<any> = new EventEmitter();

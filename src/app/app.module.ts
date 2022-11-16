@@ -12,6 +12,8 @@ import { LoginModule } from './features/login/login.module';
 import { RegistrationModule } from './features/registration/registration.module';
 import { CourseModule } from './features/course/course.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CoursesService } from './services/courses.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegistrationModule,
     CourseModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far);

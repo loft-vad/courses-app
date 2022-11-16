@@ -10,6 +10,7 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { FormatDatePipe } from './pipes/formatDate.pipe';
 import { ArrToStringPipe } from './pipes/arrayToString.pipe';
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -29,7 +30,8 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     FontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   exports: COMPONENTS
 })
