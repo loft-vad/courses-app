@@ -1,0 +1,17 @@
+<div class="card-wrapper">
+  <div class="card-title">
+    {{ title }}
+  </div>
+  <div class="card-description">
+    {{ description }}
+  </div>
+  <div class="card-data">
+    <strong>Authors:</strong> {{ authors | arrToString }}<br>
+    <strong>Duration:</strong> {{ duration | duration }}<br>
+    <strong>Created:</strong> {{ creationDate | dateFormatDDMMYYYY }}
+  </div>
+  <div class="card-actions">
+    <ng-content></ng-content>
+    <ng-content *ngIf="isEditable" select="[action]"></ng-content>
+  </div>
+</div>

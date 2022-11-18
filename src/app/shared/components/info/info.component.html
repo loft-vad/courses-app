@@ -1,0 +1,9 @@
+<div class="info-wrapper">
+  <div class="info-panel">
+    <h3>{{title}}</h3>
+    <div *ngIf="text">{{text}}</div>
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
