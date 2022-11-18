@@ -1,0 +1,43 @@
+<div class="login-form-wrapper">
+  <div class="login-form">
+    <h3>Registration</h3>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="login-form-content">
+
+        <div class="form-field">
+          <label for="userName">Name</label>
+          <input type="text" placeholder="Input text" name="userName" id="userName" formControlName="userName" />
+          <div *ngIf="(f['userName'].dirty || f['userName'].touched) && f['userName'].errors" class="error-message">
+            <span *ngIf="f['userName'].errors['minlength']">Name must be at least 6 characters.</span>
+            <span *ngIf="f['userName'].errors['required']">Name is required.</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" placeholder="Input text" name="email" id="email" ngModel required
+            formControlName="email" />
+          <div *ngIf="(f['email'].dirty || f['email'].touched) && f['email'].errors" class="error-message">
+            <span *ngIf="f['email'].errors['required']">Email is required. </span>
+            <span *ngIf="f['email'].errors['emailValidator']">Email is invalid.</span>
+          </div>
+        </div>
+
+        <div class="form-field invalid">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="Input text" ngModel required
+            formControlName="password" />
+          <div *ngIf="(f['password'].dirty || f['password'].touched) && f['password'].errors" class="error-message">
+            <span *ngIf="f['password'].errors['required']">Password is required. </span>
+          </div>
+        </div>
+        <div class="login-form-submit">
+          <app-button buttonText="Login"></app-button>
+        </div>
+        <div class="login-form-text">
+          If you have an account you may <strong>Login</strong>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

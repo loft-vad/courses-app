@@ -1,0 +1,29 @@
+<app-header>
+  Harry Potter
+  <app-button [buttonText]="'Logout'"></app-button>
+</app-header>
+
+<div class="content-wrapper">
+  <div class="courses-wrapper">
+    <app-button (click)="showModal()" [buttonText]="'Open modal'"></app-button>
+
+    <app-search [searchPlaceholder]="'Input text'" (searchButtonEmitter)="searchSubmit($event)"></app-search>
+
+    <app-courses-list *ngIf="courses" [courses]="courses" [areEditable]="areCoursesEditable"
+      (showCourseEmitter)="showCourse()" (editCourseEmitter)="editCourse()" (deleteCourseEmitter)="deleteCourse()">
+      <!-- *ngIf="courses; else addNewCourse" -->
+    </app-courses-list>
+    <!--
+    <ng-template #addNewCourse>
+    </ng-template>
+    -->
+    <app-info *ngIf="!courses" [title]="'Your List is Empty'"
+      [text]="'Please use \'Add New Course\' button to add your first course'">
+      <app-button [buttonText]="'Add New Course'"></app-button>
+    </app-info>
+
+  </div>
+
+  <app-modal *ngIf="isModalShown" (modalResultEmitter)="modalClosed($event)"></app-modal>
+
+</div>

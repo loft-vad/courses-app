@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "title title"
+    "description data"
+    "description actions";
+  gap: 10px;
+  margin-bottom: 32px;
+  background: #ffffff;
+  // border: 1px solid rgba(0, 0, 0, 0.12);
+  border-left: 7px solid #333e48;
+  box-shadow: 0px 0 7px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  padding: 21px 24px 31px;
+}
+
+.card-title {
+  grid-area: title;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.card-description {
+  grid-area: description;
+  padding-right: 30px;
+}
+
+.card-data {
+  grid-area: data;
+  padding-bottom: 20px;
+}
+
+.card-actions {
+  grid-area: actions;
+  display: flex;
+  gap: 11px;
+}

@@ -1,0 +1,19 @@
+<div class="modal-shadow">
+  <div class="modal-wrapper">
+    <div class="modal-header">
+      <h4>{{ title }}</h4>
+      <div class="modal-header-actions">
+        <button (click)="closeModal(false)">
+          <fa-icon [icon]="faClose"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div class="modal-content">
+      {{ message }}
+    </div>
+    <footer>
+      <app-button [buttonText]="okButtonText" (click)="closeModal(true)"></app-button>
+      <app-button [buttonText]="cancelButtonText" (click)="closeModal(false)"></app-button>
+    </footer>
+  </div>
+</div>
