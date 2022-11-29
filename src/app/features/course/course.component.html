@@ -1,0 +1,18 @@
+<div class="card-wrapper">
+  <div class="card-title">
+    {{ course.title }}
+  </div>
+  <div class="card-description">
+    {{ course.description }}
+  </div>
+  <div class="card-data">
+    <strong>Authors:</strong> {{ authors }}<br>
+    <strong>Duration:</strong> {{ course.duration }}<br>
+    <strong>Created:</strong> {{ course.creationDate }}
+  </div>
+  <div class="card-actions">
+    <app-button [buttonText]="'Show course'" (buttonClick)="openModal($event)"></app-button>
+    <app-button [iconName]="'trash-can'"></app-button>
+    <app-button [iconName]="'pencil'" [iconPrefix]="'fas'"></app-button>
+  </div>
+</div>
